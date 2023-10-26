@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/meno_list">
+
+    app:startDestination="@id/memo_list">
     <fragment
-        android:id="@+id/meno_list"
-        android:name="deu.soft.a20192336.view.memo_list"
+        android:id="@+id/memo_list"
+        android:name="deu.soft.a20192336.view.MemoListFragment"
         android:label="fragment_meno_list"
-        tools:layout="@layout/fragment_meno_list">
+        tools:layout="@layout/fragment_memo_list">
         <action
             android:id="@+id/action_meno_list_to_memo_view"
             app:destination="@id/memo_view" />
@@ -18,31 +19,22 @@
     </fragment>
     <fragment
         android:id="@+id/memo_edit_form"
-        android:name="deu.soft.a20192336.view.memo_form"
+        android:name="deu.soft.a20192336.view.MemoEditFragment"
         android:label="fragment_memo_form"
-        tools:layout="@layout/fragment_edit_memo" >
-        <action
-            android:id="@+id/action_memo_edit_form_to_nav_graph"
-            app:destination="@id/nav_graph" />
-    </fragment>
+        tools:layout="@layout/fragment_memo_edit"/>
     <fragment
         android:id="@+id/memo_view"
-        android:name="deu.soft.a20192336.view.memo_view"
+        android:name="deu.soft.a20192336.view.MemoDetailFragment"
         android:label="fragment_memo_view"
-        tools:layout="@layout/fragment_memo_view">
+        tools:layout="@layout/fragment_memo_detail">
         <action
             android:id="@+id/action_memo_view_to_memo_form2"
             app:destination="@id/memo_edit_form" />
     </fragment>
     <fragment
         android:id="@+id/new_memo"
-        android:name="deu.soft.a20192336.view.new_memo"
+        android:name="deu.soft.a20192336.view.MemoCreateFragment"
         android:label="fragment_new_memo"
-        tools:layout="@layout/fragment_new_memo" >
-        <action
-            android:id="@+id/action_new_memo_to_meno_list"
-            app:destination="@id/meno_list"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+        tools:layout="@layout/fragment_memo_create">
     </fragment>
 </navigation>

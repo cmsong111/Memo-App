@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.dagger.hilt.android")
+    id ("androidx.navigation.safeargs")
 }
 
 android {
@@ -28,6 +29,10 @@ android {
         viewBinding = true
     }
 
+    dataBinding {
+        enable = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,9 +40,6 @@ android {
 }
 
 dependencies {
-    val lifecycleVersion = "2.6.2"
-    val roomVersion = "2.6.0"
-    val navVersion = "2.7.4"
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
@@ -48,16 +50,20 @@ dependencies {
 
 
     // ViewModel & LiveData
+    val lifecycleVersion = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata:$lifecycleVersion")
 
     // Room
+    val roomVersion = "2.6.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // Navigation
+    val navVersion = "2.7.4"
     implementation("androidx.navigation:navigation-fragment:$navVersion")
     implementation("androidx.navigation:navigation-ui:$navVersion")
+
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.44")

@@ -11,7 +11,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import deu.soft.a20192336.R;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {

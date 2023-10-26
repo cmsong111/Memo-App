@@ -3,29 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.memo_form">
+    tools:context=".view.MemoDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
+
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메모장 수정 폼"
+            android:text="메모장 자세히 보기\n화면"
             android:textSize="50sp" />
 
         <Button
-            android:id="@+id/button_memo_save"
+            android:id="@+id/button_memo_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="저장" />
+            android:text="메모장 수정" />
 
     </LinearLayout>
-
 </FrameLayout>
