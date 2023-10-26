@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 검색 아이콘-->
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="검색"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <!--    더보기로 추가, 개발자 정보 보기-->
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/baseline_more_vert_24"
+        android:title="더보기"
+        android:visible="true"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/add_memo"
+                android:icon="@drawable/baseline_add_24"
+                android:title="메모 추가" />
+            <item
+                android:id="@+id/developer_info"
+                android:icon="@drawable/baseline_info_24"
+                android:title="개발자 정보" />
+        </menu>
+    </item>
+
+</menu>

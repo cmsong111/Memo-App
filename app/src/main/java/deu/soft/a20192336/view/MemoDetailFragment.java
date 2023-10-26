@@ -27,10 +27,21 @@ public class MemoDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // 수정
         binding.buttonMemoEdit.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).navigate(
                     MemoDetailFragmentDirections.actionMemoViewToMemoForm2()
             );
+        });
+
+        // 삭제
+        binding.buttonMemoDelete.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigateUp();
+        });
+
+        // 뒤로가기
+        binding.buttonMemoBack.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigateUp();
         });
     }
 }
