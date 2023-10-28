@@ -7,28 +7,35 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import deu.soft.a20192336.databinding.FragmentMemoCreateBinding;
 
 
+@AndroidEntryPoint
 public class MemoCreateFragment extends Fragment {
-
-
     FragmentMemoCreateBinding binding;
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        MemoCreateViewModel viewModel = new ViewModelProvider(this).get(MemoCreateViewModel.class);
         binding = FragmentMemoCreateBinding.inflate(inflater, container, false);
+
+        binding.setLifecycleOwner(this);
+        binding.setViewModel(viewModel);
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         binding.buttonSaveMemo.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).navigateUp();
@@ -38,6 +45,4 @@ public class MemoCreateFragment extends Fragment {
             NavHostFragment.findNavController(this).navigateUp();
         });
     }
-
-
 }

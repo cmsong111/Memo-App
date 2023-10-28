@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="#6750A4"
     app:menu="@menu/main_tool_bar"
-
+    android:elevation="4dp"
     app:title="내 메모">
 
 

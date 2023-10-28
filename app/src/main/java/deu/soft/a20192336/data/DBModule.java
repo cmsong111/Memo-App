@@ -1,5 +1,7 @@
 package deu.soft.a20192336.data;
 
+import android.util.Log;
+
 import androidx.room.Room;
 
 import javax.inject.Singleton;
@@ -21,7 +23,7 @@ public class DBModule {
                         BaseApplication.getContext(),
                         AppDatabase.class,
                         "prj20192336.db")
-                .build();
+                .fallbackToDestructiveMigration().build();
     }
 
     @Singleton
