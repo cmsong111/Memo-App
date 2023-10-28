@@ -1,24 +1,13 @@
 package deu.soft.a20192336.view;
 
-import android.app.Application;
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.navigation.fragment.NavHostFragment;
-
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import dagger.hilt.android.qualifiers.ApplicationContext;
-import deu.soft.a20192336.data.Memo;
 import deu.soft.a20192336.data.MemoDao;
 
 @HiltViewModel

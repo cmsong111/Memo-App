@@ -9,9 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import deu.soft.a20192336.databinding.FragmentMemoDetailBinding;
 
-
+@AndroidEntryPoint
 public class MemoDetailFragment extends Fragment {
 
     FragmentMemoDetailBinding binding;

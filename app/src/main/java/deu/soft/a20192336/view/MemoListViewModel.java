@@ -1,15 +1,8 @@
 package deu.soft.a20192336.view;
 
-import android.util.Log;
-import android.widget.ArrayAdapter;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,5 +29,4 @@ public class MemoListViewModel extends ViewModel {
             memoDao.delete(memoId);
         }).start();
     }
-
 }

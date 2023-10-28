@@ -1,7 +1,6 @@
 package deu.soft.a20192336.view;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
 import java.util.Collections;
 import java.util.List;
