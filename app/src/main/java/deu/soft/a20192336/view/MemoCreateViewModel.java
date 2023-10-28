@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import java.sql.Timestamp;
@@ -25,7 +26,6 @@ public class MemoCreateViewModel extends ViewModel {
 
     @Inject
     public MemoCreateViewModel(MemoDao memoDao) {
-        Log.d("MemoCreateViewModel", "MemoCreateViewModel was created");
         this.memoDao = memoDao;
     }
 
@@ -48,6 +48,5 @@ public class MemoCreateViewModel extends ViewModel {
         new Thread(() -> {
             memoDao.save(title.getValue(), content.getValue(), now, now);
         }).start();
-
     }
 }

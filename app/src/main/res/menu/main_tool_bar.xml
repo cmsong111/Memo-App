@@ -4,6 +4,14 @@
 
     <!-- 검색 아이콘-->
     <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/baseline_refresh_24"
+        android:title="새로고침"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+    />
+
+    <item
         android:id="@+id/search"
         android:icon="@drawable/baseline_search_24"
         android:title="검색"

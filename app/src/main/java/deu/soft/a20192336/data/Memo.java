@@ -20,4 +20,15 @@ public class Memo {
 
     @ColumnInfo(name = "updated_at")
     public String updatedAt;
+
+    @Override
+    public String toString() {
+        return "Memo{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
 }

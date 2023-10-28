@@ -19,12 +19,13 @@ import deu.soft.a20192336.databinding.FragmentMemoCreateBinding;
 @AndroidEntryPoint
 public class MemoCreateFragment extends Fragment {
     FragmentMemoCreateBinding binding;
+    MemoCreateViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        MemoCreateViewModel viewModel = new ViewModelProvider(this).get(MemoCreateViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MemoCreateViewModel.class);
         binding = FragmentMemoCreateBinding.inflate(inflater, container, false);
 
         binding.setLifecycleOwner(this);

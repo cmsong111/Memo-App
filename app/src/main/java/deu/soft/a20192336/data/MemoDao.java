@@ -1,9 +1,11 @@
 package deu.soft.a20192336.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 
 import java.util.List;
+
 
 @Dao
 public interface MemoDao {
@@ -38,7 +40,7 @@ public interface MemoDao {
      * @return 모든 메모
      */
     @Query("SELECT * FROM memo20192336")
-    List<Memo> getAll();
+    LiveData<List<Memo>> getAll();
 
     /**
      * ID로 메모를 가져오는 메소드
@@ -47,7 +49,7 @@ public interface MemoDao {
      * @return 메모
      */
     @Query("SELECT * FROM memo20192336 WHERE id = :id")
-    Memo findById(int id);
+    LiveData<Memo> findById(int id);
 
     /**
      * 제목 또는 내용에 특정 문자열이 포함된 메모를 가져오는 메소드
@@ -57,7 +59,7 @@ public interface MemoDao {
      * @return 메모
      */
     @Query("SELECT * FROM memo20192336 WHERE title LIKE :title OR content LIKE :content")
-    List<Memo> findByTitleContainingOrContentContaining(String title, String content);
+    LiveData<List<Memo>> findByTitleContainingOrContentContaining(String title, String content);
 
 
     /**
