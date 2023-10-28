@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -62,6 +64,20 @@ public class MemoListFragment extends Fragment {
             return false;
         });
 
+        binding.toolbarMemoList.getMenu().getItem(0).setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                Toast.makeText(getContext(), "Action View Expanded...", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                Toast.makeText(getContext(), "Action View Collapsed...", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
         // Floating Action Button 클릭 - 새 메모 작성
         binding.floatingActionButton.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).navigate(
@@ -71,9 +87,10 @@ public class MemoListFragment extends Fragment {
 
         // ListView Item 클릭 - 메모 보기
         binding.listViewMemoList.setOnItemClickListener((parent, view1, position, id) -> {
-            NavHostFragment.findNavController(this).navigate(
-                    MemoListFragmentDirections.actionMenoListToMemoView()
-            );
+            Memo memo = (Memo) binding.listViewMemoList.getItemAtPosition(position);
+            MemoListFragmentDirections.ActionMenoListToMemoView action = MemoListFragmentDirections.actionMenoListToMemoView();
+            action.setMemoIdx(memo.id);
+            NavHostFragment.findNavController(this).navigate(action);
         });
 
         // ListView Item 클릭 - 삭제

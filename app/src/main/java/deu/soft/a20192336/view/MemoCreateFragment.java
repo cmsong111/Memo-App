@@ -25,9 +25,8 @@ public class MemoCreateFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(MemoCreateViewModel.class);
         binding = FragmentMemoCreateBinding.inflate(inflater, container, false);
-
-        binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(this);
 
         return binding.getRoot();
     }

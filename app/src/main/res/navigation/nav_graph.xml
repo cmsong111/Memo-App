@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_memo_list">
         <action
             android:id="@+id/action_meno_list_to_memo_view"
-            app:destination="@id/memo_view" />
+            app:destination="@id/memo_view" >
+            <argument
+                android:name="memoIdx"
+                android:defaultValue="1" />
+        </action>
         <action
             android:id="@+id/action_meno_list_to_new_memo"
             app:destination="@id/new_memo" />
@@ -30,6 +34,9 @@
         <action
             android:id="@+id/action_memo_view_to_memo_form2"
             app:destination="@id/memo_edit_form" />
+        <argument
+            android:name="memoIdx"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/new_memo"

@@ -1,82 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MemoDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="memo"
+            type="deu.soft.a20192336.data.Memo" />
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.MemoDetailFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_memo_detail"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#6750A4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@번 메모" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView_memo_create_at"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="작성일: 2021-06-01 12:00:00"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_memo_detail" />
-
-        <TextView
-            android:id="@+id/textView_memo_update_at"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="수정일: 2021-06-01 12:00:00"
-            app:layout_constraintTop_toBottomOf="@+id/textView_memo_create_at" />
-
-        <TextView
-            android:id="@+id/textView_memo_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="제목: 메모 제목"
-            app:layout_constraintTop_toBottomOf="@+id/textView_memo_update_at" />
-
-        <TextView
-            android:id="@+id/textView_memo_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="내용 : 메모 내용\n메모내용"
-            app:layout_constraintTop_toBottomOf="@+id/textView_memo_title" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <Button
-                android:id="@+id/button_memo_edit"
-                android:layout_width="0dp"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_memo_detail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="수정" />
+                android:background="#6750A4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@{String.valueOf(memo.id)}"  />
 
-            <Button
-                android:id="@+id/button_memo_delete"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/textView_memo_create_at"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="삭제" />
+                android:text="@{memo.createdAt}"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_memo_detail" />
 
-            <Button
-                android:id="@+id/button_memo_back"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/textView_memo_update_at"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="돌아가기" />
+                android:text="@{memo.updatedAt}"
+                app:layout_constraintTop_toBottomOf="@+id/textView_memo_create_at" />
 
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView_memo_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{memo.title}"
+                app:layout_constraintTop_toBottomOf="@+id/textView_memo_update_at" />
+
+            <TextView
+                android:id="@+id/textView_memo_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{memo.content}"
+                app:layout_constraintTop_toBottomOf="@+id/textView_memo_title" />
 
 
-</FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <Button
+                    android:id="@+id/button_memo_edit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="수정" />
+
+                <Button
+                    android:id="@+id/button_memo_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="삭제" />
+
+                <Button
+                    android:id="@+id/button_memo_back"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="돌아가기" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>
