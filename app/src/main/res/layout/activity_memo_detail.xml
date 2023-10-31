@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="memo"
+            type="deu.soft.a20192336.data.Memo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_memo_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6750A4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{String.valueOf(memo.id)}" />
+
+        <TextView
+            android:id="@+id/textView_memo_create_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{memo.createdAt}"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_memo_detail" />
+
+        <TextView
+            android:id="@+id/textView_memo_update_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{memo.updatedAt}"
+            app:layout_constraintTop_toBottomOf="@+id/textView_memo_create_at" />
+
+        <TextView
+            android:id="@+id/textView_memo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{memo.title}"
+            app:layout_constraintTop_toBottomOf="@+id/textView_memo_update_at" />
+
+        <TextView
+            android:id="@+id/textView_memo_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{memo.content}"
+            app:layout_constraintTop_toBottomOf="@+id/textView_memo_title" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/button_memo_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="수정" />
+
+            <Button
+                android:id="@+id/button_memo_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="삭제" />
+
+            <Button
+                android:id="@+id/button_memo_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="돌아가기" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

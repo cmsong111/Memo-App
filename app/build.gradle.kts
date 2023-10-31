@@ -48,7 +48,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
     // ViewModel & LiveData
     val lifecycleVersion = "2.6.2"
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion")
@@ -58,12 +57,6 @@ dependencies {
     val roomVersion = "2.6.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
-
-    // Navigation
-    val navVersion = "2.7.4"
-    implementation("androidx.navigation:navigation-fragment:$navVersion")
-    implementation("androidx.navigation:navigation-ui:$navVersion")
-
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.44")

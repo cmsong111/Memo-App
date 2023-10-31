@@ -23,6 +23,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".view.MemoCreateActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+
+        <activity
+            android:name=".view.MemoDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+
+        <activity
+            android:name=".view.MemoEditActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
     </application>
 

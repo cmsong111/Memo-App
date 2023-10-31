@@ -1,4 +1,4 @@
-package deu.soft.a20192336.view;
+package deu.soft.a20192336;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -12,11 +12,11 @@ import deu.soft.a20192336.data.Memo;
 import deu.soft.a20192336.data.MemoDao;
 
 @HiltViewModel
-public class MemoListViewModel extends ViewModel {
+public class MainActivityViewModel extends ViewModel {
     MemoDao memoDao;
 
     @Inject
-    public MemoListViewModel(MemoDao memoDao) {
+    public MainActivityViewModel(MemoDao memoDao) {
         this.memoDao = memoDao;
     }
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="deu.soft.a20192336.view.MemoCreateViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_memo_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6750A4"
+            android:elevation="4dp"
+            app:title="내 메모" />
+
+
+        <EditText
+            android:id="@+id/editText_memo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="제목을 입력하세요"
+            android:hint="제목을 입력하세요"
+            android:text="@={viewModel.title}"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_memo_create" />
+
+        <EditText
+            android:id="@+id/editText_memo_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autofillHints="내용을 입력하세요"
+            android:gravity="top"
+            android:hint="내용을 입력하세요"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:text="@={viewModel.content}"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/editText_memo_title"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="16dp">
+
+            <Button
+                android:id="@+id/button_save_memo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="메모 기록" />
+
+            <Button
+                android:id="@+id/button_cancel_memo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="취소" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
