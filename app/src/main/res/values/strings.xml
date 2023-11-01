@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Memo 20192336</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="memo_tool_bar_title">%1$d번 메모</string>
+    <string name="memo_tool_bar_edit_title">%1$d번 메모 수정</string>
 </resources>

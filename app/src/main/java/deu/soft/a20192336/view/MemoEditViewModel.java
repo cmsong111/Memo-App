@@ -19,7 +19,7 @@ public class MemoEditViewModel extends ViewModel {
 
     MemoDao memoDao;
 
-    int memoId;
+    public int memoId;
     public MutableLiveData<String> title = new MutableLiveData<>();
     public MutableLiveData<String> content = new MutableLiveData<>();
 

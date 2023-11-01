@@ -1,6 +1,8 @@
 package deu.soft.a20192336.view;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -26,14 +28,29 @@ public class MemoCreateActivity extends AppCompatActivity {
 
 
         binding.buttonSaveMemo.setOnClickListener(v -> {
+            if (viewModel.title.getValue() == null || viewModel.title.getValue().isEmpty()) {
+                Toast.makeText(this, "메모의 '제목'란이 비워졌습니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (viewModel.content.getValue() == null || viewModel.content.getValue().isEmpty()) {
+                Toast.makeText(this, "메모의 '내용'란이 비워졌습니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             viewModel.saveMemo();
             setResult(RESULT_OK);
             finish();
         });
 
         binding.buttonCancelMemo.setOnClickListener(v -> {
-            setResult(RESULT_CANCELED);
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("메모 작성을 취소하시겠습니까?");
+            builder.setPositiveButton("예", (dialog, which) -> {
+                setResult(RESULT_CANCELED);
+                finish();
+            });
+            builder.setNegativeButton("아니오", (dialog, which) -> {
+            });
+            builder.show();
         });
     }
 }

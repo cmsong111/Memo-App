@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
 
 
-
         searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView = (SearchView) binding.toolbarMemoList.getMenu().getItem(0).getActionView();
         if (searchManager != null) {

@@ -3,6 +3,8 @@ package deu.soft.a20192336.view;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -35,6 +37,10 @@ public class MemoDetailActivity extends AppCompatActivity {
         // 메모 불러오기
         memoDao.findById(memoId).observe(this, memo -> {
             binding.setMemo(memo);
+            if (!memo.createdAt.equals(memo.updatedAt)) {
+                binding.linearLayoutMemoUpdateAt.setVisibility(View.VISIBLE);
+            }
+
         });
 
         memoEditActivityLauncher = registerForActivityResult(
@@ -50,6 +56,9 @@ public class MemoDetailActivity extends AppCompatActivity {
                 }
         );
 
+        binding.textViewMemoContent.setMovementMethod(new ScrollingMovementMethod());
+
+
         // 수정
         binding.buttonMemoEdit.setOnClickListener(v -> {
             Intent intent = new Intent(this, MemoEditActivity.class);
@@ -64,7 +73,7 @@ public class MemoDetailActivity extends AppCompatActivity {
         binding.buttonMemoDelete.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("메모 삭제");
-            builder.setMessage("메모를 삭제하시겠습니까?");
+            builder.setMessage("이 메모(" + String.valueOf(memoId) + "번)를 삭제하시겠습니까?");
             builder.setPositiveButton("삭제", (dialog, which) -> {
                 new Thread(() -> {
                     memoDao.delete(memoId);
