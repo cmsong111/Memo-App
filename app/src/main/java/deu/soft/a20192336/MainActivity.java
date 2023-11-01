@@ -7,10 +7,12 @@
 package deu.soft.a20192336;
 
 import android.app.AlertDialog;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     MainActivityViewModel viewModel;
     ActivityResultLauncher<Intent> memoCreateActivityLauncher;
     ActivityResultLauncher<Intent> memoDetailActivityLauncher;
+    SearchManager searchManager;
+    SearchView searchView;
+
     long backKeyPressedTime = 0;
 
     @Override
@@ -45,8 +50,39 @@ public class MainActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
+
+
+        searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView = (SearchView) binding.toolbarMemoList.getMenu().getItem(0).getActionView();
+        if (searchManager != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }
+
+        // 검색어 입력시
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // 검색어 입력 완료시
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                binding.getMemoAdapter().setSearchResult(viewModel.findMemoList(query));
+                if (binding.getMemoAdapter().getCount() == 0) {
+                    Toast.makeText(MainActivity.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+
+            // 검색어 입력시
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                binding.getMemoAdapter().setSearchResult(viewModel.findMemoList(newText));
+                if (newText.equals("")) {
+                    Toast.makeText(MainActivity.this, "검색 단어가 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
         // 메모 View 어탭터 설정
         binding.setMemoAdapter(new ListViewAdaptor(viewModel.getMemoList()));
+
 
         // 메모 추가 Activity 실행
         memoCreateActivityLauncher = registerForActivityResult(
@@ -86,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
         binding.toolbarMemoList.getMenu().getItem(0).setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(@NonNull MenuItem item) {
-                Toast.makeText(MainActivity.this, "Action View Expanded...", Toast.LENGTH_SHORT).show();
                 return true;
             }
 
+            // 검색창 닫을 때
             @Override
             public boolean onMenuItemActionCollapse(@NonNull MenuItem item) {
-                Toast.makeText(MainActivity.this, "Action View Collapsed...", Toast.LENGTH_SHORT).show();
+                binding.setMemoAdapter(new ListViewAdaptor(viewModel.getMemoList()));
                 return true;
             }
         });
@@ -133,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
+
         if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis();
             Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();

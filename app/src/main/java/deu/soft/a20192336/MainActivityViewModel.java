@@ -24,6 +24,10 @@ public class MainActivityViewModel extends ViewModel {
         return memoDao.getAll();
     }
 
+    public LiveData<List<Memo>> findMemoList(String title) {
+        return memoDao.findByTitleContainingOrContentContaining(title, title);
+    }
+
     public void deleteMemo(int memoId) {
         new Thread(() -> {
             memoDao.delete(memoId);

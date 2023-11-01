@@ -58,7 +58,7 @@ public interface MemoDao {
      * @param content 내용
      * @return 메모
      */
-    @Query("SELECT * FROM memo20192336 WHERE title LIKE :title OR content LIKE :content")
+    @Query("SELECT * FROM memo20192336 WHERE title LIKE '%' || :title || '%' OR content LIKE '%' || :content || '%'")
     LiveData<List<Memo>> findByTitleContainingOrContentContaining(String title, String content);
 
 

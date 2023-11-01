@@ -19,12 +19,20 @@ public class ListViewAdaptor extends BaseAdapter {
     private List<Memo> memoList = Collections.emptyList();
 
     // LiveData를 Observe하면서 데이터가 변경될 때마다 ListViewAdaptor의 memoList를 갱신한다.
-     public ListViewAdaptor(LiveData<List<Memo>> memoListLiveData) {
+    public ListViewAdaptor(LiveData<List<Memo>> memoListLiveData) {
         memoListLiveData.observeForever(memos -> {
             memoList = memos;
             notifyDataSetChanged();
         });
-    };
+    }
+
+    public void setSearchResult(LiveData<List<Memo>> memoListLiveData) {
+        memoListLiveData.observeForever(memos -> {
+            memoList = memos;
+            notifyDataSetChanged();
+        });
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
