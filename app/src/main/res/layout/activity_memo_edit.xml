@@ -5,9 +5,8 @@
     <data>
 
         <variable
-            name="memo"
-            type="deu.soft.a20192336.data.Memo" />
-
+            name="viewModel"
+            type="deu.soft.a20192336.view.MemoEditViewModel" />
     </data>
 
 
@@ -24,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="제목을 입력하세요"
-            android:text="@{memo.title}"
+            android:text="@={viewModel.title}"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
@@ -34,7 +33,7 @@
             android:gravity="top"
             android:hint="내용을 입력하세요"
             android:scrollbars="vertical"
-            android:text="@{memo.content}"
+            android:text="@={viewModel.content}"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/editText_memo_title"
             tools:layout_editor_absoluteX="16dp" />
