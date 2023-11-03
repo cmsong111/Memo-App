@@ -73,4 +73,17 @@ public class MemoEditActivity extends AppCompatActivity {
         });
     }
 
+    long backKeyPressedTime = 0L;
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            Toast.makeText(this, "메모 수정을 취소 하시려면 한번 더 눌러주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            setResult(RESULT_CANCELED);
+            finish();
+        }
+    }
 }
