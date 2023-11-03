@@ -1,3 +1,9 @@
+/**
+ * 개인 프로젝트 - BaseApplication.java
+ *
+ * @Author : 컴퓨터소프트웨어공학 김남주
+ * @Email : cmsong111@naver.com
+ */
 package deu.soft.a20192336;
 
 import android.app.Application;
